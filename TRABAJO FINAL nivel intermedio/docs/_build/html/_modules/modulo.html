@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>modulo &mdash; Trabajo Final Curso Python Intermedio 1.0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/fonts.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=292eb321"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Trabajo Final Curso Python Intermedio
+          </a>
+              <div class="version">
+                1.0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../controlador.html">controlador module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modulo.html">modulo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../validador_campos.html">validador_campos module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vista.html">vista module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Trabajo Final Curso Python Intermedio</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">modulo</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for modulo</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">:Importaciones:</span>
+<span class="sd">- `peewee`: Se utiliza para interactuar con la base de datos SQLite.</span>
+<span class="sd">- `os`: Interactua con el sistema operativo y gestiona rutas de archivos.</span>
+<span class="sd">- `datetime`: Trabaja con el formato de fecha.</span>
+
+<span class="sd">Se define y conecta a una base de datos SQLite llamada &#39;baseTPFinal.db&#39;, y se establecen las rutas de directorio y archivo de registro de errores.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">peewee</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">PeeweeException</span><span class="p">,</span>
+    <span class="n">fn</span><span class="p">,</span>
+    <span class="n">SqliteDatabase</span><span class="p">,</span>
+    <span class="n">Model</span><span class="p">,</span>
+    <span class="n">IntegerField</span><span class="p">,</span>
+    <span class="n">DoubleField</span><span class="p">,</span>
+    <span class="n">DateField</span><span class="p">,</span>
+    <span class="n">CharField</span><span class="p">,</span>
+    <span class="n">DoesNotExist</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="n">db</span> <span class="o">=</span> <span class="n">SqliteDatabase</span><span class="p">(</span><span class="s2">&quot;baseTPFinal.db&quot;</span><span class="p">)</span>
+
+<span class="n">BASE_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">((</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)))</span>
+<span class="n">LOG_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s2">&quot;log.txt&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="RegistroLogError">
+<a class="viewcode-back" href="../modulo.html#modulo.RegistroLogError">[docs]</a>
+<span class="k">class</span> <span class="nc">RegistroLogError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :Descripcion:</span>
+<span class="sd">        Clase personalizada para manejar excepciones y registrar errores en un archivo log.txt.</span>
+
+<span class="sd">    :Atributos:</span>
+<span class="sd">        :linea (int): Número de línea donde se produjo el error.</span>
+<span class="sd">        :archivo (str): Nombre del archivo donde se produjo el error.</span>
+<span class="sd">        :fecha (datetime): Fecha y hora en que se produjo el error.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">linea</span><span class="p">,</span> <span class="n">archivo</span><span class="p">,</span> <span class="n">fecha</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linea</span> <span class="o">=</span> <span class="n">linea</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">archivo</span> <span class="o">=</span> <span class="n">archivo</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fecha</span> <span class="o">=</span> <span class="n">fecha</span>
+
+<div class="viewcode-block" id="RegistroLogError.registrar_error">
+<a class="viewcode-back" href="../modulo.html#modulo.RegistroLogError.registrar_error">[docs]</a>
+    <span class="k">def</span> <span class="nf">registrar_error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :Metodo: Registra un error en el archivo log.txt.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">LOG_PATH</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">log_file</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="s2">&quot;Se ha dado un error en el archivo:&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">archivo</span><span class="p">,</span>
+                <span class="s2">&quot;linea:&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">linea</span><span class="p">,</span>
+                <span class="s2">&quot;fecha:&quot;</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">fecha</span><span class="p">,</span>
+                <span class="n">file</span><span class="o">=</span><span class="n">log_file</span><span class="p">,</span>
+            <span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Venta">
+<a class="viewcode-back" href="../modulo.html#modulo.Venta">[docs]</a>
+<span class="k">class</span> <span class="nc">Venta</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :Descripcion:</span>
+<span class="sd">        Clase que define el modelo de la tabla &#39;Venta&#39; en la base de datos.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">IntegerField</span><span class="p">(</span><span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="s2">&quot;Identificador único de la venta&quot;</span>
+    <span class="n">fecha</span> <span class="o">=</span> <span class="n">DateField</span><span class="p">()</span>
+    <span class="s2">&quot;Fecha de la venta&quot;</span>
+    <span class="n">producto</span> <span class="o">=</span> <span class="n">CharField</span><span class="p">()</span>
+    <span class="s2">&quot;Nombre del producto vendido&quot;</span>
+    <span class="n">cantidad</span> <span class="o">=</span> <span class="n">IntegerField</span><span class="p">()</span>
+    <span class="s2">&quot;Cantidad de productos vendidos&quot;</span>
+    <span class="n">precio</span> <span class="o">=</span> <span class="n">DoubleField</span><span class="p">()</span>
+    <span class="s2">&quot;Precio unitario del producto&quot;</span>
+    <span class="n">precio_total</span> <span class="o">=</span> <span class="n">DoubleField</span><span class="p">()</span>
+    <span class="s2">&quot;Precio total de la venta&quot;</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">database</span> <span class="o">=</span> <span class="n">db</span></div>
+
+
+
+<div class="viewcode-block" id="Base">
+<a class="viewcode-back" href="../modulo.html#modulo.Base">[docs]</a>
+<span class="k">class</span> <span class="nc">Base</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :Descripcion:</span>
+<span class="sd">        Clase que maneja las distintas acciones que se realizan con una base de datos.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">create_tables</span><span class="p">([</span><span class="n">Venta</span><span class="p">])</span>
+        <span class="k">except</span> <span class="n">PeeweeException</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error al conectarse a la base de datos&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Base.registrar">
+<a class="viewcode-back" href="../modulo.html#modulo.Base.registrar">[docs]</a>
+    <span class="k">def</span> <span class="nf">registrar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fecha</span><span class="p">,</span> <span class="n">producto</span><span class="p">,</span> <span class="n">cantidad</span><span class="p">,</span> <span class="n">precio</span><span class="p">,</span> <span class="n">precio_total</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :Metodo: Registra una nueva venta en la base de datos.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">Venta</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="nb">id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mayor_id</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="n">fecha</span><span class="o">=</span><span class="n">fecha</span><span class="p">,</span>
+                <span class="n">producto</span><span class="o">=</span><span class="n">producto</span><span class="p">,</span>
+                <span class="n">cantidad</span><span class="o">=</span><span class="n">cantidad</span><span class="p">,</span>
+                <span class="n">precio</span><span class="o">=</span><span class="n">precio</span><span class="p">,</span>
+                <span class="n">precio_total</span><span class="o">=</span><span class="n">precio_total</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="n">PeeweeException</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">registrar_error</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error al registrar la venta en la Base de Datos&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Base.modificar">
+<a class="viewcode-back" href="../modulo.html#modulo.Base.modificar">[docs]</a>
+    <span class="k">def</span> <span class="nf">modificar</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">id_a_modificar</span><span class="p">,</span>
+        <span class="n">nueva_fecha</span><span class="p">,</span>
+        <span class="n">nuevo_producto</span><span class="p">,</span>
+        <span class="n">nueva_cantidad</span><span class="p">,</span>
+        <span class="n">nuevo_precio</span><span class="p">,</span>
+        <span class="n">nuevo_precio_total</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :Metodo: Modifica una venta ya existente en la base.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">venta_modificada</span> <span class="o">=</span> <span class="n">Venta</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+                <span class="n">fecha</span><span class="o">=</span><span class="n">nueva_fecha</span><span class="p">,</span>
+                <span class="n">producto</span><span class="o">=</span><span class="n">nuevo_producto</span><span class="p">,</span>
+                <span class="n">cantidad</span><span class="o">=</span><span class="n">nueva_cantidad</span><span class="p">,</span>
+                <span class="n">precio</span><span class="o">=</span><span class="n">nuevo_precio</span><span class="p">,</span>
+                <span class="n">precio_total</span><span class="o">=</span><span class="n">nuevo_precio_total</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Venta</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">id_a_modificar</span><span class="p">)</span>
+            <span class="n">venta_modificada</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">PeeweeException</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">registrar_error</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error al modificar la venta en la Base de Datos&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Base.consultar_total_vendido">
+<a class="viewcode-back" href="../modulo.html#modulo.Base.consultar_total_vendido">[docs]</a>
+    <span class="k">def</span> <span class="nf">consultar_total_vendido</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fecha_inicial</span><span class="p">,</span> <span class="n">fecha_final</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :Metodo: Consulta el dinero total vendido entre dos fechas.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">total_vendido</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">Venta</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">fn</span><span class="o">.</span><span class="n">Sum</span><span class="p">(</span><span class="n">Venta</span><span class="o">.</span><span class="n">precio_total</span><span class="p">))</span>
+                <span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">Venta</span><span class="o">.</span><span class="n">fecha</span> <span class="o">&gt;=</span> <span class="n">fecha_inicial</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">Venta</span><span class="o">.</span><span class="n">fecha</span> <span class="o">&lt;=</span> <span class="n">fecha_final</span><span class="p">))</span>
+                <span class="o">.</span><span class="n">scalar</span><span class="p">()</span>
+                <span class="ow">or</span> <span class="mi">0</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">total_vendido</span>
+        <span class="k">except</span> <span class="n">PeeweeException</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">registrar_error</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error al consultar el total vendido en la Base de Datos&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="Base.eliminar">
+<a class="viewcode-back" href="../modulo.html#modulo.Base.eliminar">[docs]</a>
+    <span class="k">def</span> <span class="nf">eliminar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">id_a_eliminar</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :Metodo: Elimina una venta de la base de datos.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">venta_a_eliminar</span> <span class="o">=</span> <span class="n">Venta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Venta</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">id_a_eliminar</span><span class="p">)</span>
+            <span class="n">venta_a_eliminar</span><span class="o">.</span><span class="n">delete_instance</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">PeeweeException</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">registrar_error</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error al eliminar la venta de la Base de Datos&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Base.mayor_id">
+<a class="viewcode-back" href="../modulo.html#modulo.Base.mayor_id">[docs]</a>
+    <span class="k">def</span> <span class="nf">mayor_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :Metodo: Obtiene el ultiom ID ingresado en la base de datos.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">max_id</span> <span class="o">=</span> <span class="n">Venta</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">fn</span><span class="o">.</span><span class="n">Max</span><span class="p">(</span><span class="n">Venta</span><span class="o">.</span><span class="n">id</span><span class="p">))</span><span class="o">.</span><span class="n">scalar</span><span class="p">()</span> <span class="ow">or</span> <span class="mi">0</span>
+            <span class="k">return</span> <span class="n">max_id</span>
+        <span class="k">except</span> <span class="n">PeeweeException</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">registrar_error</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error al obtener el mayor ID de venta de la Base de Datos&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="Base.obtener_datos_venta">
+<a class="viewcode-back" href="../modulo.html#modulo.Base.obtener_datos_venta">[docs]</a>
+    <span class="k">def</span> <span class="nf">obtener_datos_venta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :Metodo: Obtiene los datos de una venta por su ID.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Venta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Venta</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="nb">id</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">DoesNotExist</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">registrar_error</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No existe la venta con el id indicado&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Base.registrar_error">
+<a class="viewcode-back" href="../modulo.html#modulo.Base.registrar_error">[docs]</a>
+    <span class="k">def</span> <span class="nf">registrar_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exception</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :Metodo: Registra un error en el archivo de log.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="n">RegistroLogError</span><span class="p">(</span>
+            <span class="n">exception</span><span class="o">.</span><span class="n">__traceback__</span><span class="o">.</span><span class="n">tb_lineno</span><span class="p">,</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">exception</span><span class="o">.</span><span class="n">__traceback__</span><span class="o">.</span><span class="n">tb_frame</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_filename</span><span class="p">),</span>
+            <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span>
+        <span class="p">)</span>
+        <span class="n">error</span><span class="o">.</span><span class="n">registrar_error</span><span class="p">()</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Romero Galvan, Lautaro Matias.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>modulo module &mdash; Entrega Final Curso Python3 Avanzado 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/fonts.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=d45e8c67"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="observador module" href="observador.html" />
+    <link rel="prev" title="controlador module" href="controlador.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Entrega Final Curso Python3 Avanzado
+          </a>
+              <div class="version">
+                0.0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="cliente.html">cliente module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="controlador.html">controlador module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">modulo module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#modulo.Base"><code class="docutils literal notranslate"><span class="pre">Base</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#modulo.Base.consultar_total_vendido"><code class="docutils literal notranslate"><span class="pre">Base.consultar_total_vendido()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modulo.Base.eliminar"><code class="docutils literal notranslate"><span class="pre">Base.eliminar()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modulo.Base.mayor_id"><code class="docutils literal notranslate"><span class="pre">Base.mayor_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modulo.Base.modificar"><code class="docutils literal notranslate"><span class="pre">Base.modificar()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modulo.Base.obtener_datos_venta"><code class="docutils literal notranslate"><span class="pre">Base.obtener_datos_venta()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modulo.Base.registrar"><code class="docutils literal notranslate"><span class="pre">Base.registrar()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modulo.Base.registrar_error"><code class="docutils literal notranslate"><span class="pre">Base.registrar_error()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#modulo.RegistroLogError"><code class="docutils literal notranslate"><span class="pre">RegistroLogError</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#modulo.RegistroLogError.registrar_error"><code class="docutils literal notranslate"><span class="pre">RegistroLogError.registrar_error()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#modulo.Venta"><code class="docutils literal notranslate"><span class="pre">Venta</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#modulo.Venta.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Venta.DoesNotExist</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modulo.Venta.cantidad"><code class="docutils literal notranslate"><span class="pre">Venta.cantidad</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modulo.Venta.fecha"><code class="docutils literal notranslate"><span class="pre">Venta.fecha</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modulo.Venta.id"><code class="docutils literal notranslate"><span class="pre">Venta.id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modulo.Venta.precio"><code class="docutils literal notranslate"><span class="pre">Venta.precio</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modulo.Venta.precio_total"><code class="docutils literal notranslate"><span class="pre">Venta.precio_total</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modulo.Venta.producto"><code class="docutils literal notranslate"><span class="pre">Venta.producto</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#modulo.registro_eliminacion"><code class="docutils literal notranslate"><span class="pre">registro_eliminacion()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modulo.registro_insertar"><code class="docutils literal notranslate"><span class="pre">registro_insertar()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modulo.registro_modificacion"><code class="docutils literal notranslate"><span class="pre">registro_modificacion()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="observador.html">observador module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="servidor.html">servidor module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="validador_campos.html">validador_campos module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vista.html">vista module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Entrega Final Curso Python3 Avanzado</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">modulo module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/modulo.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-modulo">
+<span id="modulo-module"></span><h1>modulo module<a class="headerlink" href="#module-modulo" title="Link to this heading"></a></h1>
+<dl class="field-list simple">
+<dt class="field-odd">Importaciones<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<ul class="simple">
+<li><p><cite>peewee</cite>: Se utiliza para interactuar con la base de datos SQLite.</p></li>
+<li><p><cite>os</cite>: Interactua con el sistema operativo y gestiona rutas de archivos.</p></li>
+<li><p><cite>datetime</cite>: Trabaja con el formato de fecha.</p></li>
+</ul>
+<p>Se define y conecta a una base de datos SQLite llamada ‘baseTPFinal.db’, y se establecen las rutas de directorio y archivo de registro de errores.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="modulo.Base">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modulo.</span></span><span class="sig-name descname"><span class="pre">Base</span></span><a class="reference internal" href="_modules/modulo.html#Base"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modulo.Base" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="observador.html#observador.Sujeto" title="observador.Sujeto"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sujeto</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Descripcion<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Clase que maneja las distintas acciones que se realizan con una base de datos.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="modulo.Base.consultar_total_vendido">
+<span class="sig-name descname"><span class="pre">consultar_total_vendido</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fecha_inicial</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fecha_final</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modulo.html#Base.consultar_total_vendido"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modulo.Base.consultar_total_vendido" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Metodo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Consulta el dinero total vendido entre dos fechas.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modulo.Base.eliminar">
+<span class="sig-name descname"><span class="pre">eliminar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modulo.html#Base.eliminar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modulo.Base.eliminar" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modulo.Base.mayor_id">
+<span class="sig-name descname"><span class="pre">mayor_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/modulo.html#Base.mayor_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modulo.Base.mayor_id" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Metodo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Obtiene el ultiom ID ingresado en la base de datos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modulo.Base.modificar">
+<span class="sig-name descname"><span class="pre">modificar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modulo.html#Base.modificar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modulo.Base.modificar" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modulo.Base.obtener_datos_venta">
+<span class="sig-name descname"><span class="pre">obtener_datos_venta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modulo.html#Base.obtener_datos_venta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modulo.Base.obtener_datos_venta" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Metodo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Obtiene los datos de una venta por su ID.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modulo.Base.registrar">
+<span class="sig-name descname"><span class="pre">registrar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modulo.html#Base.registrar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modulo.Base.registrar" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="modulo.Base.registrar_error">
+<span class="sig-name descname"><span class="pre">registrar_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exception</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modulo.html#Base.registrar_error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modulo.Base.registrar_error" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Metodo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Registra un error en el archivo de log.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="modulo.RegistroLogError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modulo.</span></span><span class="sig-name descname"><span class="pre">RegistroLogError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">linea</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">archivo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fecha</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modulo.html#RegistroLogError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modulo.RegistroLogError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Descripcion<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Clase personalizada para manejar excepciones y registrar errores en un archivo log.txt.</p>
+</dd>
+<dt class="field-even">Atributos<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="field-list simple">
+<dt class="field-odd">linea (int)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Número de línea donde se produjo el error.</p>
+</dd>
+<dt class="field-even">archivo (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nombre del archivo donde se produjo el error.</p>
+</dd>
+<dt class="field-odd">fecha (datetime)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Fecha y hora en que se produjo el error.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="modulo.RegistroLogError.registrar_error">
+<span class="sig-name descname"><span class="pre">registrar_error</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/modulo.html#RegistroLogError.registrar_error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modulo.RegistroLogError.registrar_error" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Metodo<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Registra un error en el archivo log.txt.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="modulo.Venta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">modulo.</span></span><span class="sig-name descname"><span class="pre">Venta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modulo.html#Venta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modulo.Venta" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Descripcion<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Clase que define el modelo de la tabla ‘Venta’ en la base de datos.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modulo.Venta.DoesNotExist">
+<span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#modulo.Venta.DoesNotExist" title="Link to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">VentaDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modulo.Venta.cantidad">
+<span class="sig-name descname"><span class="pre">cantidad</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;IntegerField:</span> <span class="pre">Venta.cantidad&gt;</span></em><a class="headerlink" href="#modulo.Venta.cantidad" title="Link to this definition"></a></dt>
+<dd><p>Cantidad de productos vendidos</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modulo.Venta.fecha">
+<span class="sig-name descname"><span class="pre">fecha</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;DateField:</span> <span class="pre">Venta.fecha&gt;</span></em><a class="headerlink" href="#modulo.Venta.fecha" title="Link to this definition"></a></dt>
+<dd><p>Fecha de la venta</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modulo.Venta.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;IntegerField:</span> <span class="pre">Venta.id&gt;</span></em><a class="headerlink" href="#modulo.Venta.id" title="Link to this definition"></a></dt>
+<dd><p>Identificador único de la venta</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modulo.Venta.precio">
+<span class="sig-name descname"><span class="pre">precio</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;DoubleField:</span> <span class="pre">Venta.precio&gt;</span></em><a class="headerlink" href="#modulo.Venta.precio" title="Link to this definition"></a></dt>
+<dd><p>Precio unitario del producto</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modulo.Venta.precio_total">
+<span class="sig-name descname"><span class="pre">precio_total</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;DoubleField:</span> <span class="pre">Venta.precio_total&gt;</span></em><a class="headerlink" href="#modulo.Venta.precio_total" title="Link to this definition"></a></dt>
+<dd><p>Precio total de la venta</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="modulo.Venta.producto">
+<span class="sig-name descname"><span class="pre">producto</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;CharField:</span> <span class="pre">Venta.producto&gt;</span></em><a class="headerlink" href="#modulo.Venta.producto" title="Link to this definition"></a></dt>
+<dd><p>Nombre del producto vendido</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="modulo.registro_eliminacion">
+<span class="sig-prename descclassname"><span class="pre">modulo.</span></span><span class="sig-name descname"><span class="pre">registro_eliminacion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modulo.html#registro_eliminacion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modulo.registro_eliminacion" title="Link to this definition"></a></dt>
+<dd><p>Decorador: Informa de la eliminacion de un registro en la consola.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="modulo.registro_insertar">
+<span class="sig-prename descclassname"><span class="pre">modulo.</span></span><span class="sig-name descname"><span class="pre">registro_insertar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modulo.html#registro_insertar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modulo.registro_insertar" title="Link to this definition"></a></dt>
+<dd><p>Decorador: Informa de un nuevo registro en la consola.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="modulo.registro_modificacion">
+<span class="sig-prename descclassname"><span class="pre">modulo.</span></span><span class="sig-name descname"><span class="pre">registro_modificacion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modulo.html#registro_modificacion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#modulo.registro_modificacion" title="Link to this definition"></a></dt>
+<dd><p>Decorador: Informa de una modificacion de un registro en la consola.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="controlador.html" class="btn btn-neutral float-left" title="controlador module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="observador.html" class="btn btn-neutral float-right" title="observador module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Romero Galvan, Lautaro Matias.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
